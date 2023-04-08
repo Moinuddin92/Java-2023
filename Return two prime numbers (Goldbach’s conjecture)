@@ -1,0 +1,48 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    private static boolean isPrime(int n) {
+        int squareRootOfN = (int)Math.sqrt(n);
+
+        for(int i = 2; i <= squareRootOfN; i++) {
+            if(n % i == 0) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+    static List<Integer> primeDivision(int n){
+        // code here
+        List<Integer> l=new ArrayList<>();
+        for(int i=2;i<=n/2;i++)
+        {
+            if(isPrime(i) && isPrime(n-i))
+            {
+                l.add(i);
+                l.add(n-i);
+                break;
+            }
+        }
+        
+        return l;
+    }
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        for(int i=1;i<=t;i++){
+            int n = sc.nextInt();
+            List<Integer> l=new ArrayList<Integer>();
+            l=primeDivision(n);
+            for(Integer num:l){
+                System.out.print(num + " ");
+            }
+            System.out.println();
+        }
+
+    }
+}
